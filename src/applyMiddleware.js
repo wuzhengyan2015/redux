@@ -30,7 +30,7 @@ export default function applyMiddleware(...middlewares) {
       getState: store.getState,
       dispatch: (...args) => dispatch(...args) // 调用的是封装过的dispatch， 不是store.dispatch
     }
-    const chain = middlewares.map(middleware => middleware(middlewareAPI))
+    const chain = middlewares.map(middleware => middleware(middlewareAPI)) // 这个时候调用dispatch会出错
     dispatch = compose(...chain)(store.dispatch) // 传入store.dispatch，返回一个封装的dispatch，同时middleware中调用的也是封装的dispatch
 
     return {
