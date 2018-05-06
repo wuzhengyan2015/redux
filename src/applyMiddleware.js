@@ -28,7 +28,7 @@ export default function applyMiddleware(...middlewares) {
 
     const middlewareAPI = {
       getState: store.getState,
-      dispatch: (...args) => dispatch(...args)
+      dispatch: (...args) => dispatch(...args) // 调用的是封装过的dispatch， 不是store.dispatch
     }
     const chain = middlewares.map(middleware => middleware(middlewareAPI))
     dispatch = compose(...chain)(store.dispatch)
