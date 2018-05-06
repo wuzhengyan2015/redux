@@ -39,7 +39,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
       throw new Error('Expected the enhancer to be a function.')
     }
 
-    return enhancer(createStore)(reducer, preloadedState)
+    return enhancer(createStore)(reducer, preloadedState) // 有middleware的时候创建方式
   }
 
   if (typeof reducer !== 'function') {
